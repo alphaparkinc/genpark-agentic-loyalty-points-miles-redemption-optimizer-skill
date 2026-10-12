@@ -1,0 +1,40 @@
+{
+  "name": "genpark-agentic-loyalty-points-miles-redemption-optimizer-skill",
+  "version": "1.0.0",
+  "description": "Autonomous Loyalty Points & Airline Miles Redemption Arbitrage Optimizer. Evaluates Cents-Per-Point (CPP) valuations across credit card transfer partners (Chase UR, Amex MR, Citi, Bilt), airline alliances, and hotel portals (Expedia, Marriott, Hyatt), accounts for transfer bonuses and carrier fuel surcharges, and selects the Pareto-optimal payment path.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "optimize_loyalty_redemption",
+      "description": "Calculate Cents-Per-Point (CPP) valuation, evaluate transfer partner bonuses, and select optimal cash vs points redemption path.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "calculate_cpp_valuation",
+              "optimize_redemption_route"
+            ],
+            "description": "Loyalty optimization action."
+          },
+          "cash_price_usd": {
+            "type": "number",
+            "description": "Retail cash price of flight or hotel."
+          },
+          "redemption_options": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Candidate point options [program, points_required, taxes_fees_usd, transfer_bonus_pct]."
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ]
+}
